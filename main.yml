@@ -1,0 +1,9 @@
+---
+
+- name: Main File
+  hosts: all
+  vars_files:
+      - env_vars/base.yml
+
+  roles:
+    - base

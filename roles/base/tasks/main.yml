@@ -1,0 +1,24 @@
+---
+
+- name: Print env vars
+  debug: msg="Env Var '{{ envvar }}'"
+
+- name: Print password var
+  debug: msg="Env Var '{{ sslpass }}'"
+
+- name: Unencrypt file using openssl
+  shell: openssl enc -aes-256-cbc -d -salt -in encrypted.txt.enc -out decrypted.txt -k {{ sslpass }}
+
+- name: Check Unencrypted file exists
+  stat:
+    path: ./decrypted.txt
+  register: stat_result
+
+- name: Create read script (encrypted)
+  shell: cat decrypted.txt
+  register: script
+  when: stat_result.stat.exists == True
+
+- name: Display the read file
+  debug: msg={{ script.stdout }}
+  when: script is defined and script|succeeded
