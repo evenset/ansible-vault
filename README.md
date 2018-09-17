@@ -60,7 +60,7 @@ If you need to encrypt other, non-yml files that are not directly used by ansibl
 
 ### Viewing, Editting and Decrypting Files
 You can view or modify an encrypted file with the following commands.  
-You can find the documentation at https://docs.ansible.com/ansible/2.6/user_guide/vault.html#decrypting-encrypted-files
+You can find the documentation at https://docs.ansible.com/ansible/2.6/user_guide/vault.html
 ```
 # View
 ansible-vault view foo.yml bar.yml
